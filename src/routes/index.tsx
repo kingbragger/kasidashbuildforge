@@ -1,4 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
+import barkBadge from "@/assets/bark-badge.png";
+import kasiLogo from "@/assets/kasi-logo.png";
+import buildforgeLogo from "@/assets/buildforge-logo.png";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -47,9 +51,8 @@ function Index() {
       {/* Nav */}
       <header className="sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          <div className="text-2xl font-black italic tracking-tight">
-            <span className="text-primary">Kasi</span> Dash
-          </div>
+          <img src={kasiLogo} alt="Kasi Dash" className="h-10 w-auto" />
+
           <nav className="hidden gap-8 text-sm text-muted-foreground md:flex">
             <a href="#categories" className="hover:text-foreground">Categories</a>
             <a href="#how" className="hover:text-foreground">How it works</a>
@@ -95,16 +98,15 @@ function Index() {
                 Join
               </button>
             </form>
-            {/* Bark badge placeholder */}
             <a
               href="https://www.bark.com/en/za/company/kasidash-and-buildforge-ptyltd/Qw61nL/"
               target="_blank"
               rel="noreferrer"
-              className="mt-6 inline-flex items-center rounded-md bg-white px-4 py-3 text-xs font-bold text-slate-900"
+              className="mt-6 inline-block"
             >
-              ★ bark PROFESSIONAL ★
-              <span className="ml-2 text-[10px] font-normal text-slate-500">(upload badge to replace)</span>
+              <img src={barkBadge} alt="Bark Professional" className="h-16 w-auto" />
             </a>
+
           </div>
 
           {/* Floating category cards */}
@@ -247,7 +249,7 @@ function Index() {
       <section className="py-24">
         <div className="mx-auto grid max-w-7xl gap-12 px-6 md:grid-cols-2 md:items-center">
           <div>
-            <div className="text-2xl font-black tracking-tight text-primary">BuildForge</div>
+            <img src={buildforgeLogo} alt="BuildForge" className="h-12 w-auto" />
             <h2 className="mt-4 text-4xl font-black md:text-5xl">Prove your skills. Join the core team.</h2>
             <p className="mt-4 max-w-md text-muted-foreground">
               BuildForge is a system where developers, designers, and marketers prove their skills through real challenges and get selected into a core team to work on real projects.
@@ -299,10 +301,10 @@ function Index() {
             href="https://www.bark.com/en/za/company/kasidash-and-buildforge-ptyltd/Qw61nL/"
             target="_blank"
             rel="noreferrer"
-            className="rounded-md bg-white px-3 py-2 text-xs font-bold text-slate-900"
           >
-            ★ bark PROFESSIONAL ★
+            <img src={barkBadge} alt="Bark Professional" className="h-12 w-auto" />
           </a>
+
         </div>
       </footer>
     </div>
