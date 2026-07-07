@@ -1,7 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import barkBadge from "@/assets/bark-badge.png";
 import kasiLogo from "@/assets/kasi-logo.png";
 import buildforgeLogo from "@/assets/buildforge-logo.png";
+import alxCert from "@/assets/alx-software-engineering-cert.png";
+
+const PORTFOLIO_URL = "https://agent-6a4a6adbecfcb3d55e50--henryndlovuportfolio.netlify.app/";
 
 
 export const Route = createFileRoute("/")({
@@ -54,18 +57,18 @@ function Index() {
           <img src={kasiLogo} alt="Kasi Dash" className="h-10 w-auto" />
 
           <nav className="hidden gap-8 text-sm text-muted-foreground md:flex">
-            <a href="#categories" className="hover:text-foreground">Categories</a>
-            <a href="#how" className="hover:text-foreground">How it works</a>
-            <a href="#vendors" className="hover:text-foreground">Vendors</a>
-            <a href="#join" className="hover:text-foreground">Join</a>
+            <a href="#categories" className="hover:text-foreground">Services</a>
+            <a href="#certifications" className="hover:text-foreground">Credentials</a>
+            <a href="#how" className="hover:text-foreground">Process</a>
+            <a href={PORTFOLIO_URL} target="_blank" rel="noreferrer" className="hover:text-foreground">Portfolio</a>
           </nav>
           <div className="flex items-center gap-3">
-            <a href="/login" className="hidden text-sm font-medium text-muted-foreground hover:text-foreground sm:inline">
+            <Link to="/login" className="hidden text-sm font-medium text-muted-foreground hover:text-foreground sm:inline">
               Sign in
-            </a>
-            <a href="#vendors" className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:opacity-90">
+            </Link>
+            <Link to="/enquire" className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:opacity-90">
               Enquire
-            </a>
+            </Link>
           </div>
 
         </div>
