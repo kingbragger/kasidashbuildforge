@@ -1,4 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/lib/auth-context";
 import barkBadge from "@/assets/bark-badge.png";
 import kasiLogo from "@/assets/kasi-logo.png";
 import buildforgeLogo from "@/assets/buildforge-logo.png";
