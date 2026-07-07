@@ -202,19 +202,20 @@ function Index() {
           />
           <div>
             <p className="text-sm font-semibold uppercase tracking-widest text-primary">Vendor Plan</p>
-            <div className="mt-2 text-5xl font-black">R250<span className="text-lg font-normal text-muted-foreground">/month</span></div>
+            <div className="mt-2 text-4xl font-black md:text-5xl">Custom Quotation</div>
             <p className="mt-4 max-w-md text-muted-foreground">
-              Per active catalogue. Get your products in front of township customers with full delivery infrastructure included.
+              Every vendor is different. Send us an enquiry with your catalogue size and delivery area and we will send back a tailored quotation, no surprises.
             </p>
             <ul className="mt-6 space-y-2 text-sm">
-              {["Unlimited products","Live on Kasi Dash Shop","Delivery included","Real time notifications","Cancel anytime"].map((x) => (
+              {["Priced per catalogue and delivery zone","Live on Kasi Dash Shop","Delivery included","Real time notifications","Cancel anytime"].map((x) => (
                 <li key={x} className="flex items-center gap-2"><span className="text-primary">✓</span>{x}</li>
               ))}
             </ul>
-            <a href="#apply" className="mt-8 inline-block rounded-xl bg-primary px-6 py-3 font-semibold text-primary-foreground hover:opacity-90">
-              Apply to List Your Store
+            <a href="/enquire" className="mt-8 inline-block rounded-xl bg-primary px-6 py-3 font-semibold text-primary-foreground hover:opacity-90">
+              Enquire for a Quotation
             </a>
           </div>
+
         </div>
       </section>
 
