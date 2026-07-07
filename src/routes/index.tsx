@@ -59,9 +59,15 @@ function Index() {
             <a href="#vendors" className="hover:text-foreground">Vendors</a>
             <a href="#join" className="hover:text-foreground">Join</a>
           </nav>
-          <a href="#shop" className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:opacity-90">
-            Open App
-          </a>
+          <div className="flex items-center gap-3">
+            <a href="/login" className="hidden text-sm font-medium text-muted-foreground hover:text-foreground sm:inline">
+              Sign in
+            </a>
+            <a href="#vendors" className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:opacity-90">
+              Enquire
+            </a>
+          </div>
+
         </div>
       </header>
 
