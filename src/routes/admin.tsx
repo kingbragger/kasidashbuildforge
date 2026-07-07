@@ -44,6 +44,7 @@ function AdminPage() {
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <Link to="/"><img src={kasiLogo} alt="Kasi Dash" className="h-9 w-auto" /></Link>
           <div className="flex items-center gap-4">
+            <Link to="/" className="text-xs text-muted-foreground hover:text-foreground">Home</Link>
             <Link to="/portal" className="text-xs text-muted-foreground hover:text-foreground">My Portal</Link>
             <button onClick={() => signOut().then(() => nav({ to: "/" }))} className="text-xs text-muted-foreground hover:text-foreground">Sign out</button>
           </div>
