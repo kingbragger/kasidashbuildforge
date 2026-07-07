@@ -228,6 +228,60 @@ function Index() {
         </div>
       </section>
 
+      {/* Certifications & Portfolio */}
+      <section id="certifications" className="border-t border-border bg-card/30 py-24">
+        <div className="mx-auto max-w-7xl px-6">
+          <p className="text-sm font-semibold uppercase tracking-widest text-primary">Credentials</p>
+          <h2 className="mt-2 max-w-3xl text-4xl font-black md:text-5xl">Built by certified engineers</h2>
+          <p className="mt-4 max-w-2xl text-muted-foreground">
+            Our lead engineer holds an ALX Africa Software Engineering Professional Certificate and additional credentials from Stanford, IBM, Google Cloud and Yonsei University. Every project is delivered to professional standards.
+          </p>
+
+          <div className="mt-12 grid gap-10 md:grid-cols-2 md:items-center">
+            <a href={PORTFOLIO_URL} target="_blank" rel="noreferrer" className="group block overflow-hidden rounded-2xl border-2 border-primary/40 bg-card p-4 shadow-2xl transition hover:border-primary">
+              <img src={alxCert} alt="ALX Africa Software Engineering Professional Certificate awarded to Henry Ndlovu" className="w-full rounded-lg object-contain" />
+              <div className="mt-4 flex items-center justify-between px-2 pb-2 text-sm">
+                <div>
+                  <div className="font-bold">Software Engineering Professional</div>
+                  <div className="text-muted-foreground">ALX Africa · 2024</div>
+                </div>
+                <span className="text-primary group-hover:underline">See all credentials →</span>
+              </div>
+            </a>
+
+            <div>
+              <ul className="space-y-4 text-sm">
+                {[
+                  ["ALX Africa", "Software Engineering Professional Certificate"],
+                  ["Stanford University Online", "Fundamentals of AI and ML in Precision Medicine"],
+                  ["Stanford University Online", "Data Science in Precision Medicine and Cloud Computing"],
+                  ["IBM SkillsBuild", "Web Development Fundamentals · Data Literacy"],
+                  ["Yonsei University, Coursera", "IoT Wireless and Cloud Computing"],
+                  ["Google Cloud, Coursera", "Google Workspace Fundamentals"],
+                ].map(([issuer, title]) => (
+                  <li key={title} className="flex items-start gap-3 rounded-xl border border-border bg-background p-4">
+                    <span className="mt-0.5 text-primary">✓</span>
+                    <div>
+                      <div className="font-semibold">{title}</div>
+                      <div className="text-xs text-muted-foreground">{issuer}</div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <a href={PORTFOLIO_URL} target="_blank" rel="noreferrer" className="rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:opacity-90">
+                  View the full portfolio →
+                </a>
+                <Link to="/enquire" className="rounded-xl border border-border bg-card px-6 py-3 text-sm font-semibold hover:bg-secondary">
+                  Start a project
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
       {/* Join ecosystem */}
       <section id="join" className="border-t border-border bg-card/30 py-24">
         <div className="mx-auto max-w-7xl px-6">
