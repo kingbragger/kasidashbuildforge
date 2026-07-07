@@ -59,9 +59,15 @@ function Index() {
             <a href="#vendors" className="hover:text-foreground">Vendors</a>
             <a href="#join" className="hover:text-foreground">Join</a>
           </nav>
-          <a href="#shop" className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:opacity-90">
-            Open App
-          </a>
+          <div className="flex items-center gap-3">
+            <a href="/login" className="hidden text-sm font-medium text-muted-foreground hover:text-foreground sm:inline">
+              Sign in
+            </a>
+            <a href="#vendors" className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:opacity-90">
+              Enquire
+            </a>
+          </div>
+
         </div>
       </header>
 
@@ -202,19 +208,20 @@ function Index() {
           />
           <div>
             <p className="text-sm font-semibold uppercase tracking-widest text-primary">Vendor Plan</p>
-            <div className="mt-2 text-5xl font-black">R250<span className="text-lg font-normal text-muted-foreground">/month</span></div>
+            <div className="mt-2 text-4xl font-black md:text-5xl">Custom Quotation</div>
             <p className="mt-4 max-w-md text-muted-foreground">
-              Per active catalogue. Get your products in front of township customers with full delivery infrastructure included.
+              Every vendor is different. Send us an enquiry with your catalogue size and delivery area and we will send back a tailored quotation, no surprises.
             </p>
             <ul className="mt-6 space-y-2 text-sm">
-              {["Unlimited products","Live on Kasi Dash Shop","Delivery included","Real time notifications","Cancel anytime"].map((x) => (
+              {["Priced per catalogue and delivery zone","Live on Kasi Dash Shop","Delivery included","Real time notifications","Cancel anytime"].map((x) => (
                 <li key={x} className="flex items-center gap-2"><span className="text-primary">✓</span>{x}</li>
               ))}
             </ul>
-            <a href="#apply" className="mt-8 inline-block rounded-xl bg-primary px-6 py-3 font-semibold text-primary-foreground hover:opacity-90">
-              Apply to List Your Store
+            <a href="/enquire" className="mt-8 inline-block rounded-xl bg-primary px-6 py-3 font-semibold text-primary-foreground hover:opacity-90">
+              Enquire for a Quotation
             </a>
           </div>
+
         </div>
       </section>
 
@@ -294,19 +301,80 @@ function Index() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-border py-10">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 text-sm text-muted-foreground md:flex-row">
-          <div>© {new Date().getFullYear()} Kasi Dash. All rights reserved.</div>
-          <a
-            href="https://www.bark.com/en/za/company/kasidash-and-buildforge-ptyltd/Qw61nL/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img src={barkBadge} alt="Bark Professional" className="h-12 w-auto" />
-          </a>
+      <footer className="border-t border-border bg-background pt-16">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="grid gap-10 md:grid-cols-4">
+            {/* Brand */}
+            <div>
+              <img src={kasiLogo} alt="Kasi Dash" className="h-10 w-auto" />
+              <p className="mt-4 max-w-xs text-sm text-muted-foreground">
+                Fast deliveries built for South African townships.
+              </p>
+              <a
+                href="mailto:unity@kasidash.co.za"
+                className="mt-4 inline-flex items-center gap-2 text-sm text-primary hover:underline"
+              >
+                <span>✉</span> unity@kasidash.co.za
+              </a>
+              <a
+                href="https://www.bark.com/en/za/company/kasidash-and-buildforge-ptyltd/Qw61nL/"
+                target="_blank"
+                rel="noreferrer"
+                className="mt-6 block w-fit"
+              >
+                <img src={barkBadge} alt="Bark Professional" className="h-14 w-auto" />
+              </a>
+            </div>
 
+            {/* Platform */}
+            <div>
+              <h4 className="text-sm font-bold uppercase tracking-widest text-primary">Platform</h4>
+              <ul className="mt-4 space-y-3 text-sm">
+                <li><a href="/shop" className="text-muted-foreground hover:text-foreground">Shop</a></li>
+                <li><a href="/order" className="text-muted-foreground hover:text-foreground">Place Order</a></li>
+                <li><a href="/careers" className="text-muted-foreground hover:text-foreground">Careers</a></li>
+                <li><a href="/about" className="text-muted-foreground hover:text-foreground">About Us</a></li>
+              </ul>
+            </div>
+
+            {/* Partners */}
+            <div>
+              <h4 className="text-sm font-bold uppercase tracking-widest text-primary">Partners</h4>
+              <ul className="mt-4 space-y-3 text-sm">
+                <li><a href="/apply/driver" className="text-muted-foreground hover:text-foreground">Become a Driver</a></li>
+                <li><a href="/apply/vendor" className="text-muted-foreground hover:text-foreground">List Your Store</a></li>
+                <li><span className="font-semibold text-primary">Custom quotation per catalogue</span></li>
+                <li className="pt-2"><a href="/login" className="text-muted-foreground hover:text-foreground">Driver Portal →</a></li>
+                <li><a href="/login" className="text-muted-foreground hover:text-foreground">Vendor Portal →</a></li>
+                <li><a href="/staff-login" className="text-muted-foreground hover:text-foreground">Staff Login →</a></li>
+              </ul>
+            </div>
+
+            {/* Legal */}
+            <div>
+              <h4 className="text-sm font-bold uppercase tracking-widest text-primary">Legal</h4>
+              <ul className="mt-4 space-y-3 text-sm">
+                <li><a href="/privacy" className="text-muted-foreground hover:text-foreground">Privacy Policy</a></li>
+                <li><a href="/terms" className="text-muted-foreground hover:text-foreground">Terms & Conditions</a></li>
+                <li><a href="/popia" className="text-muted-foreground hover:text-foreground">POPIA Compliant</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="mt-12 flex flex-col justify-between gap-3 border-t border-border py-6 text-sm text-muted-foreground md:flex-row">
+            <div>© {new Date().getFullYear()} Kasi Dash. All rights reserved. South Africa.</div>
+            <div>Built for the kasi.</div>
+          </div>
+          <div className="flex flex-col justify-center gap-2 border-t border-border py-5 text-xs text-muted-foreground md:flex-row md:gap-6">
+            <span>Reg. No. 2026/362826/07</span>
+            <span className="hidden md:inline">|</span>
+            <span>Jurisdiction: Republic of South Africa</span>
+            <span className="hidden md:inline">|</span>
+            <span>Structure: Web based Enterprise</span>
+          </div>
         </div>
       </footer>
+
     </div>
   );
 }
