@@ -301,10 +301,10 @@ function Index() {
             href="https://www.bark.com/en/za/company/kasidash-and-buildforge-ptyltd/Qw61nL/"
             target="_blank"
             rel="noreferrer"
-            className="rounded-md bg-white px-3 py-2 text-xs font-bold text-slate-900"
           >
-            ★ bark PROFESSIONAL ★
+            <img src={barkBadge} alt="Bark Professional" className="h-12 w-auto" />
           </a>
+
         </div>
       </footer>
     </div>
