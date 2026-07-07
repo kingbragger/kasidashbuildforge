@@ -186,7 +186,30 @@ function Index() {
 
       {/* Hero */}
       <section className="relative overflow-hidden">
-        <div className="mx-auto grid max-w-7xl gap-12 px-6 py-20 md:grid-cols-2 md:py-28">
+        {/* Hexagon line pattern background */}
+        <div className="pointer-events-none absolute inset-0 text-primary opacity-[0.22]" aria-hidden>
+          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="hexPattern" x="0" y="0" width="70" height="60.62" patternUnits="userSpaceOnUse">
+                <path
+                  d="M35 0 L70 20.2 L70 60.62 L35 80.83 L0 60.62 L0 20.2 Z"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="0.6"
+                />
+              </pattern>
+              <radialGradient id="hexFade" cx="50%" cy="50%" r="60%">
+                <stop offset="0%" stopColor="white" stopOpacity="1" />
+                <stop offset="100%" stopColor="white" stopOpacity="0" />
+              </radialGradient>
+              <mask id="hexMask">
+                <rect width="100%" height="100%" fill="url(#hexFade)" />
+              </mask>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#hexPattern)" mask="url(#hexMask)" />
+          </svg>
+        </div>
+        <div className="relative mx-auto grid max-w-7xl gap-12 px-6 py-20 md:grid-cols-2 md:py-28">
           <div>
             <span className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-1.5 text-sm text-primary">
               <span className="h-2 w-2 rounded-full bg-primary" />
