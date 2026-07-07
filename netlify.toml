@@ -1,0 +1,13 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NITRO_PRESET = "netlify"
+  NODE_VERSION = "20"
+
+# TanStack Router handles routing client-side; ensure deep links work.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

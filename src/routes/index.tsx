@@ -6,46 +6,156 @@ import alxCert from "@/assets/alx-software-engineering-cert.png";
 
 const PORTFOLIO_URL = "https://agent-6a4a6adbecfcb3d55e50--henryndlovuportfolio.netlify.app/";
 
-
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Kasi Dash · Fast Township Delivery in South Africa" },
+      { title: "Kasi Dash · Professional Web Development in South Africa" },
       {
         name: "description",
         content:
-          "Food, clothing, groceries, gadgets and more. From your township's best vendors, straight to your door.",
+          "We build professional websites for every business, from e-commerce to corporate, booking systems, portfolios and custom platforms. Plans from R2,500.",
       },
-      { property: "og:title", content: "Kasi Dash · Fast Township Delivery" },
+      { property: "og:title", content: "Kasi Dash · Professional Web Development" },
       {
         property: "og:description",
-        content: "Everything Kasi needs, delivered. Fast, trusted, affordable.",
+        content:
+          "E-commerce, corporate, booking, portfolio and custom web platforms. Certified engineers. Plans from R2,500.",
       },
+      { property: "og:type", content: "website" },
     ],
   }),
   component: Index,
 });
 
-const categories = [
-  { name: "Restaurant", tag: "Hot & Fresh", img: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&q=85" },
-  { name: "Clothing", tag: "Street Style", img: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=85" },
-  { name: "Groceries", tag: "Daily Essentials", img: "https://images.unsplash.com/photo-1542838132-92c53300491e?w=800&q=85" },
-  { name: "Gadgets", tag: "Tech & More", img: "https://images.unsplash.com/photo-1498049794561-7780e7231661?w=800&q=85" },
-  { name: "Perfumes", tag: "Smell Amazing", img: "https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=800&q=85" },
-  { name: "Pharmacy", tag: "Health & Care", img: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800&q=85" },
+const services = [
+  {
+    name: "Business Websites",
+    tag: "Corporate & Professional",
+    img: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=85",
+  },
+  {
+    name: "E-commerce Stores",
+    tag: "Sell Online",
+    img: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&q=85",
+  },
+  {
+    name: "Booking Platforms",
+    tag: "Salons, Clinics, Tours",
+    img: "https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=800&q=85",
+  },
+  {
+    name: "Portfolios",
+    tag: "Personal Brand",
+    img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=85",
+  },
+  {
+    name: "Restaurant Sites",
+    tag: "Menus & Ordering",
+    img: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&q=85",
+  },
+  {
+    name: "Custom Web Apps",
+    tag: "Dashboards & SaaS",
+    img: "https://images.unsplash.com/photo-1498049794561-7780e7231661?w=800&q=85",
+  },
 ];
 
 const features = [
-  { title: "Fast Delivery", desc: "No more waiting. We move at kasi speed." },
-  { title: "Trusted Drivers", desc: "Local drivers who know every street." },
-  { title: "Affordable Prices", desc: "Premium service that doesn't break the bank." },
-  { title: "Live GPS Tracking", desc: "Watch your order arrive on the map in real time." },
+  { title: "Certified Engineers", desc: "ALX Africa, Stanford Online, IBM and Google Cloud credentials." },
+  { title: "Fast Delivery", desc: "Most sites launched within two to four weeks." },
+  { title: "Mobile First", desc: "Every build is responsive, fast and search engine ready." },
+  { title: "Ongoing Support", desc: "Optional care plans keep your site secure and up to date." },
 ];
 
 const steps = [
-  { n: "01", title: "Browse & Order", desc: "Shop vendor catalogues or place a custom delivery request.", img: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&q=80" },
-  { n: "02", title: "Driver Assigned", desc: "A vetted local driver picks up your order immediately.", img: "https://images.unsplash.com/photo-1526367790999-0150786686a2?w=600&q=80" },
-  { n: "03", title: "Live Tracking", desc: "Watch your delivery arrive live on the map until it's in your hands.", img: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80" },
+  {
+    n: "01",
+    title: "Enquire",
+    desc: "Tell us about your business and what you need. No obligation.",
+    img: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80",
+  },
+  {
+    n: "02",
+    title: "Quotation",
+    desc: "We send a clear scope and price tailored to your project.",
+    img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80",
+  },
+  {
+    n: "03",
+    title: "Design & Build",
+    desc: "We design, develop and review the site with you at every step.",
+    img: "https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?w=600&q=80",
+  },
+  {
+    n: "04",
+    title: "Launch & Support",
+    desc: "We deploy your site and support you as your business grows.",
+    img: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&q=80",
+  },
+];
+
+const plans = [
+  {
+    name: "Starter",
+    price: "R2,500",
+    priceNote: "once off",
+    tagline: "A clean one-page site to get your business online.",
+    features: [
+      "Single page website",
+      "Mobile responsive design",
+      "Contact form & WhatsApp button",
+      "Basic SEO setup",
+      "Hosted on Netlify",
+      "Delivered in 5 to 7 days",
+    ],
+    cta: "Start with Starter",
+  },
+  {
+    name: "Business",
+    price: "R6,500",
+    priceNote: "once off",
+    tagline: "A polished multi-page site for growing businesses.",
+    features: [
+      "Up to 6 pages",
+      "Custom design & branding",
+      "Blog or news section",
+      "Google Analytics & SEO",
+      "Contact & booking forms",
+      "1 month free support",
+    ],
+    cta: "Choose Business",
+    featured: true,
+  },
+  {
+    name: "E-commerce",
+    price: "R12,500",
+    priceNote: "from",
+    tagline: "Sell products or services online with a full store.",
+    features: [
+      "Full product catalogue",
+      "Secure card & EFT payments",
+      "Order & stock management",
+      "Customer accounts",
+      "Shipping & delivery zones",
+      "Admin dashboard",
+    ],
+    cta: "Launch a Store",
+  },
+  {
+    name: "Custom",
+    price: "Enquire",
+    priceNote: "for pricing",
+    tagline: "Bespoke web platforms, dashboards and integrations.",
+    features: [
+      "Discovery workshop",
+      "Custom architecture",
+      "Third-party integrations",
+      "User roles & permissions",
+      "Dedicated project manager",
+      "Long-term partnership",
+    ],
+    cta: "Enquire for Pricing",
+  },
 ];
 
 function Index() {
@@ -57,9 +167,10 @@ function Index() {
           <img src={kasiLogo} alt="Kasi Dash" className="h-10 w-auto" />
 
           <nav className="hidden gap-8 text-sm text-muted-foreground md:flex">
-            <a href="#categories" className="hover:text-foreground">Services</a>
-            <a href="#certifications" className="hover:text-foreground">Credentials</a>
-            <a href="#how" className="hover:text-foreground">Process</a>
+            <a href="#services" className="hover:text-foreground">Services</a>
+            <a href="#pricing" className="hover:text-foreground">Pricing</a>
+            <a href="#process" className="hover:text-foreground">Process</a>
+            <a href="#credentials" className="hover:text-foreground">Credentials</a>
             <a href={PORTFOLIO_URL} target="_blank" rel="noreferrer" className="hover:text-foreground">Portfolio</a>
           </nav>
           <div className="flex items-center gap-3">
@@ -70,7 +181,6 @@ function Index() {
               Enquire
             </Link>
           </div>
-
         </div>
       </header>
 
@@ -80,47 +190,34 @@ function Index() {
           <div>
             <span className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-1.5 text-sm text-primary">
               <span className="h-2 w-2 rounded-full bg-primary" />
-              Live in selected townships
+              Web development · South Africa
             </span>
             <h1 className="mt-6 text-5xl font-black leading-[1.05] tracking-tight md:text-7xl">
-              Everything <span className="text-primary">Kasi</span> Needs,
-              <br /> Delivered.
+              Websites that grow <span className="text-primary">your business</span>.
             </h1>
             <p className="mt-6 max-w-lg text-lg text-muted-foreground">
-              Food, clothing, groceries, gadgets and more. From your township's best vendors, straight to your door.
+              From e-commerce to corporate sites, booking platforms and custom web apps, we design and build professional websites for every kind of business.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <a href="#shop" className="rounded-xl bg-primary px-6 py-3 font-semibold text-primary-foreground hover:opacity-90">
-                Shop Now →
-              </a>
-              <a href="#order" className="rounded-xl border border-border bg-card px-6 py-3 font-semibold hover:bg-secondary">
-                Place a Delivery
+              <Link to="/enquire" className="rounded-xl bg-primary px-6 py-3 font-semibold text-primary-foreground hover:opacity-90">
+                Get a Quotation →
+              </Link>
+              <a href="#pricing" className="rounded-xl border border-border bg-card px-6 py-3 font-semibold hover:bg-secondary">
+                See Plans
               </a>
             </div>
-            <form className="mt-6 flex max-w-md gap-2">
-              <input
-                type="email"
-                placeholder="Get early access, enter your email"
-                className="flex-1 rounded-lg border border-border bg-card px-4 py-3 text-sm outline-none focus:border-primary"
-              />
-              <button type="button" className="rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:opacity-90">
-                Join
-              </button>
-            </form>
             <a
               href="https://www.bark.com/en/za/company/kasidash-and-buildforge-ptyltd/Qw61nL/"
               target="_blank"
               rel="noreferrer"
-              className="mt-6 inline-block"
+              className="mt-8 inline-block"
             >
               <img src={barkBadge} alt="Bark Professional" className="h-16 w-auto" />
             </a>
-
           </div>
 
-          {/* Floating category cards */}
           <div className="relative grid grid-cols-2 gap-4">
-            {categories.map((c, i) => (
+            {services.map((c, i) => (
               <div
                 key={c.name}
                 className="group relative overflow-hidden rounded-2xl border border-border shadow-2xl"
@@ -138,16 +235,16 @@ function Index() {
         </div>
       </section>
 
-      {/* Categories */}
-      <section id="categories" className="border-t border-border bg-card/30 py-24">
+      {/* Services */}
+      <section id="services" className="border-t border-border bg-card/30 py-24">
         <div className="mx-auto max-w-7xl px-6">
-          <p className="text-sm font-semibold uppercase tracking-widest text-primary">What We Deliver</p>
-          <h2 className="mt-2 max-w-2xl text-4xl font-black md:text-5xl">From kasi to your door</h2>
+          <p className="text-sm font-semibold uppercase tracking-widest text-primary">What We Build</p>
+          <h2 className="mt-2 max-w-2xl text-4xl font-black md:text-5xl">Websites for every business</h2>
           <p className="mt-4 max-w-xl text-muted-foreground">
-            Six categories. One app. Everything your township needs, delivered fast.
+            We work with startups, established brands, restaurants, salons, creatives and enterprises. If it lives on the web, we can build it.
           </p>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {categories.map((c) => (
+            {services.map((c) => (
               <div key={c.name} className="group overflow-hidden rounded-2xl border border-border bg-card">
                 <img src={c.img} alt={c.name} className="h-56 w-full object-cover transition group-hover:scale-105" />
                 <div className="p-5">
@@ -157,16 +254,67 @@ function Index() {
               </div>
             ))}
           </div>
-          <div className="mt-10">
-            <a href="#shop" className="inline-block rounded-xl bg-primary px-6 py-3 font-semibold text-primary-foreground hover:opacity-90">
-              Browse All Categories
-            </a>
+        </div>
+      </section>
+
+      {/* Pricing */}
+      <section id="pricing" className="py-24">
+        <div className="mx-auto max-w-7xl px-6">
+          <p className="text-sm font-semibold uppercase tracking-widest text-primary">Plans & Pricing</p>
+          <h2 className="mt-2 max-w-2xl text-4xl font-black md:text-5xl">Transparent pricing, tailored quotations</h2>
+          <p className="mt-4 max-w-2xl text-muted-foreground">
+            Choose a plan that fits your business. Every project starts with an enquiry so we can send you a written quotation before any work begins.
+          </p>
+
+          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {plans.map((p) => (
+              <div
+                key={p.name}
+                className={`flex flex-col rounded-2xl border bg-card p-6 ${
+                  p.featured ? "border-primary shadow-2xl ring-2 ring-primary/30" : "border-border"
+                }`}
+              >
+                {p.featured && (
+                  <span className="mb-3 w-fit rounded-full bg-primary px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary-foreground">
+                    Most Popular
+                  </span>
+                )}
+                <h3 className="text-2xl font-black">{p.name}</h3>
+                <div className="mt-3 flex items-baseline gap-2">
+                  <span className="text-4xl font-black text-primary">{p.price}</span>
+                  <span className="text-sm text-muted-foreground">{p.priceNote}</span>
+                </div>
+                <p className="mt-3 text-sm text-muted-foreground">{p.tagline}</p>
+                <ul className="mt-6 space-y-2 text-sm">
+                  {p.features.map((f) => (
+                    <li key={f} className="flex items-start gap-2">
+                      <span className="mt-0.5 text-primary">✓</span>
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  to="/enquire"
+                  className={`mt-8 inline-block rounded-xl px-5 py-3 text-center text-sm font-semibold ${
+                    p.featured
+                      ? "bg-primary text-primary-foreground hover:opacity-90"
+                      : "border border-border bg-background hover:bg-secondary"
+                  }`}
+                >
+                  {p.cta}
+                </Link>
+              </div>
+            ))}
           </div>
+
+          <p className="mt-8 max-w-2xl text-sm text-muted-foreground">
+            All prices are in South African Rand and exclude domain, hosting and third-party service fees. A detailed quotation is sent after your enquiry.
+          </p>
         </div>
       </section>
 
       {/* Features */}
-      <section className="py-24">
+      <section className="border-t border-border bg-card/30 py-24">
         <div className="mx-auto grid max-w-7xl gap-6 px-6 sm:grid-cols-2 lg:grid-cols-4">
           {features.map((f) => (
             <div key={f.title} className="rounded-2xl border border-border bg-card p-6">
@@ -180,18 +328,18 @@ function Index() {
         </div>
       </section>
 
-      {/* How it works */}
-      <section id="how" className="border-t border-border bg-card/30 py-24">
+      {/* Process */}
+      <section id="process" className="py-24">
         <div className="mx-auto max-w-7xl px-6">
-          <p className="text-sm font-semibold uppercase tracking-widest text-primary">Simple Process</p>
-          <h2 className="mt-2 max-w-2xl text-4xl font-black md:text-5xl">Three steps, door delivered</h2>
-          <p className="mt-4 max-w-xl text-muted-foreground">Getting what you need has never been this easy.</p>
-          <div className="mt-12 grid gap-8 md:grid-cols-3">
+          <p className="text-sm font-semibold uppercase tracking-widest text-primary">Our Process</p>
+          <h2 className="mt-2 max-w-2xl text-4xl font-black md:text-5xl">Four steps from idea to launch</h2>
+          <p className="mt-4 max-w-xl text-muted-foreground">A simple, transparent process from your first enquiry to a fully live website.</p>
+          <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             {steps.map((s) => (
               <div key={s.n} className="overflow-hidden rounded-2xl border border-border bg-card">
-                <img src={s.img} alt={s.title} className="h-52 w-full object-cover" />
+                <img src={s.img} alt={s.title} className="h-40 w-full object-cover" />
                 <div className="p-6">
-                  <div className="text-4xl font-black text-primary">{s.n}</div>
+                  <div className="text-3xl font-black text-primary">{s.n}</div>
                   <h3 className="mt-2 text-xl font-bold">{s.title}</h3>
                   <p className="mt-2 text-sm text-muted-foreground">{s.desc}</p>
                 </div>
@@ -201,45 +349,27 @@ function Index() {
         </div>
       </section>
 
-      {/* Vendor plan */}
-      <section id="vendors" className="py-24">
-        <div className="mx-auto grid max-w-7xl gap-12 px-6 md:grid-cols-2 md:items-center">
-          <img
-            src="https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=800&q=85"
-            alt="Vendor"
-            className="rounded-2xl border border-border object-cover"
-          />
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-widest text-primary">Vendor Plan</p>
-            <div className="mt-2 text-4xl font-black md:text-5xl">Custom Quotation</div>
-            <p className="mt-4 max-w-md text-muted-foreground">
-              Every vendor is different. Send us an enquiry with your catalogue size and delivery area and we will send back a tailored quotation, no surprises.
-            </p>
-            <ul className="mt-6 space-y-2 text-sm">
-              {["Priced per catalogue and delivery zone","Live on Kasi Dash Shop","Delivery included","Real time notifications","Cancel anytime"].map((x) => (
-                <li key={x} className="flex items-center gap-2"><span className="text-primary">✓</span>{x}</li>
-              ))}
-            </ul>
-            <a href="/enquire" className="mt-8 inline-block rounded-xl bg-primary px-6 py-3 font-semibold text-primary-foreground hover:opacity-90">
-              Enquire for a Quotation
-            </a>
-          </div>
-
-        </div>
-      </section>
-
-      {/* Certifications & Portfolio */}
-      <section id="certifications" className="border-t border-border bg-card/30 py-24">
+      {/* Credentials */}
+      <section id="credentials" className="border-t border-border bg-card/30 py-24">
         <div className="mx-auto max-w-7xl px-6">
           <p className="text-sm font-semibold uppercase tracking-widest text-primary">Credentials</p>
           <h2 className="mt-2 max-w-3xl text-4xl font-black md:text-5xl">Built by certified engineers</h2>
           <p className="mt-4 max-w-2xl text-muted-foreground">
-            Our lead engineer holds an ALX Africa Software Engineering Professional Certificate and additional credentials from Stanford, IBM, Google Cloud and Yonsei University. Every project is delivered to professional standards.
+            Our lead engineer holds an ALX Africa Software Engineering Professional Certificate and additional credentials from Stanford Online, IBM, Google Cloud and Yonsei University. Every project is delivered to professional standards.
           </p>
 
           <div className="mt-12 grid gap-10 md:grid-cols-2 md:items-center">
-            <a href={PORTFOLIO_URL} target="_blank" rel="noreferrer" className="group block overflow-hidden rounded-2xl border-2 border-primary/40 bg-card p-4 shadow-2xl transition hover:border-primary">
-              <img src={alxCert} alt="ALX Africa Software Engineering Professional Certificate awarded to Henry Ndlovu" className="w-full rounded-lg object-contain" />
+            <a
+              href={PORTFOLIO_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="group block overflow-hidden rounded-2xl border-2 border-primary/40 bg-card p-4 shadow-2xl transition hover:border-primary"
+            >
+              <img
+                src={alxCert}
+                alt="ALX Africa Software Engineering Professional Certificate"
+                className="w-full rounded-lg object-contain"
+              />
               <div className="mt-4 flex items-center justify-between px-2 pb-2 text-sm">
                 <div>
                   <div className="font-bold">Software Engineering Professional</div>
@@ -269,42 +399,22 @@ function Index() {
                 ))}
               </ul>
               <div className="mt-6 flex flex-wrap gap-3">
-                <a href={PORTFOLIO_URL} target="_blank" rel="noreferrer" className="rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:opacity-90">
+                <a
+                  href={PORTFOLIO_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:opacity-90"
+                >
                   View the full portfolio →
                 </a>
-                <Link to="/enquire" className="rounded-xl border border-border bg-card px-6 py-3 text-sm font-semibold hover:bg-secondary">
+                <Link
+                  to="/enquire"
+                  className="rounded-xl border border-border bg-card px-6 py-3 text-sm font-semibold hover:bg-secondary"
+                >
                   Start a project
                 </Link>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-
-      {/* Join ecosystem */}
-      <section id="join" className="border-t border-border bg-card/30 py-24">
-        <div className="mx-auto max-w-7xl px-6">
-          <p className="text-sm font-semibold uppercase tracking-widest text-primary">Opportunities</p>
-          <h2 className="mt-2 max-w-2xl text-4xl font-black md:text-5xl">Join the Kasi Dash Ecosystem</h2>
-          <p className="mt-4 max-w-xl text-muted-foreground">
-            Whether you want to deliver, partner, or build a career, there is a place for you.
-          </p>
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {[
-              { title: "Become a Driver", desc: "Earn on your own schedule. Join our growing fleet of trusted local drivers.", cta: "Apply Now", img: "https://images.unsplash.com/photo-1526367790999-0150786686a2?w=700&q=80" },
-              { title: "Partner With Us", desc: "Got a business? Use Kasi Dash delivery infrastructure to grow your reach.", cta: "Partner Up", img: "https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=700&q=80" },
-              { title: "Work With Us", desc: "We are building something big. Find open roles and be part of the journey.", cta: "View Careers", img: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&q=80" },
-            ].map((c) => (
-              <div key={c.title} className="overflow-hidden rounded-2xl border border-border bg-card">
-                <img src={c.img} alt={c.title} className="h-48 w-full object-cover" />
-                <div className="p-6">
-                  <h3 className="text-xl font-bold">{c.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">{c.desc}</p>
-                  <a href="#" className="mt-4 inline-block text-sm font-semibold text-primary hover:underline">{c.cta} →</a>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -316,21 +426,14 @@ function Index() {
             <img src={buildforgeLogo} alt="BuildForge" className="h-12 w-auto" />
             <h2 className="mt-4 text-4xl font-black md:text-5xl">Prove your skills. Join the core team.</h2>
             <p className="mt-4 max-w-md text-muted-foreground">
-              BuildForge is a system where developers, designers, and marketers prove their skills through real challenges and get selected into a core team to work on real projects.
+              BuildForge is our talent pipeline where developers, designers and marketers prove their skills through real challenges and join the team building real client projects.
             </p>
-            <div className="mt-8 space-y-4">
-              {[
-                ["Skill based selection", "No interviews. Your work speaks for you."],
-                ["Real world challenges", "Tackle actual problems, not contrived tests."],
-                ["Core team opportunity", "Top performers join the team and build together."],
-              ].map(([t, d]) => (
-                <div key={t}>
-                  <div className="font-bold">{t}</div>
-                  <div className="text-sm text-muted-foreground">{d}</div>
-                </div>
-              ))}
-            </div>
-            <a href="https://build-forge-team.lovable.app/" target="_blank" rel="noreferrer" className="mt-8 inline-block rounded-xl bg-primary px-6 py-3 font-semibold text-primary-foreground hover:opacity-90">
+            <a
+              href="https://build-forge-team.lovable.app/"
+              target="_blank"
+              rel="noreferrer"
+              className="mt-8 inline-block rounded-xl bg-primary px-6 py-3 font-semibold text-primary-foreground hover:opacity-90"
+            >
               Start Challenge
             </a>
           </div>
@@ -346,13 +449,17 @@ function Index() {
       <section className="border-t border-border bg-card/30 py-24">
         <div className="mx-auto max-w-4xl px-6 text-center">
           <p className="text-sm font-semibold uppercase tracking-widest text-primary">Ready?</p>
-          <h2 className="mt-2 text-4xl font-black md:text-6xl">Start ordering smarter today</h2>
+          <h2 className="mt-2 text-4xl font-black md:text-6xl">Let's build your website</h2>
           <p className="mt-4 text-muted-foreground">
-            Join the people relying on Kasi Dash for fast, reliable local deliveries every day.
+            Send us an enquiry and we will reply with a written quotation, no obligation.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <a href="#shop" className="rounded-xl bg-primary px-6 py-3 font-semibold text-primary-foreground hover:opacity-90">Shop Now →</a>
-            <a href="#order" className="rounded-xl border border-border bg-card px-6 py-3 font-semibold hover:bg-secondary">Place a Delivery</a>
+            <Link to="/enquire" className="rounded-xl bg-primary px-6 py-3 font-semibold text-primary-foreground hover:opacity-90">
+              Enquire Now →
+            </Link>
+            <a href="#pricing" className="rounded-xl border border-border bg-card px-6 py-3 font-semibold hover:bg-secondary">
+              View Pricing
+            </a>
           </div>
         </div>
       </section>
@@ -361,11 +468,10 @@ function Index() {
       <footer className="border-t border-border bg-background pt-16">
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid gap-10 md:grid-cols-4">
-            {/* Brand */}
             <div>
               <img src={kasiLogo} alt="Kasi Dash" className="h-10 w-auto" />
               <p className="mt-4 max-w-xs text-sm text-muted-foreground">
-                Fast deliveries built for South African townships.
+                Professional web development for South African businesses.
               </p>
               <a
                 href="mailto:unity@kasidash.co.za"
@@ -383,55 +489,54 @@ function Index() {
               </a>
             </div>
 
-            {/* Platform */}
             <div>
-              <h4 className="text-sm font-bold uppercase tracking-widest text-primary">Platform</h4>
+              <h4 className="text-sm font-bold uppercase tracking-widest text-primary">Services</h4>
               <ul className="mt-4 space-y-3 text-sm">
-                <li><a href="/shop" className="text-muted-foreground hover:text-foreground">Shop</a></li>
-                <li><a href="/order" className="text-muted-foreground hover:text-foreground">Place Order</a></li>
-                <li><a href="/careers" className="text-muted-foreground hover:text-foreground">Careers</a></li>
-                <li><a href="/about" className="text-muted-foreground hover:text-foreground">About Us</a></li>
+                <li><a href="#services" className="text-muted-foreground hover:text-foreground">What We Build</a></li>
+                <li><a href="#pricing" className="text-muted-foreground hover:text-foreground">Plans & Pricing</a></li>
+                <li><a href="#process" className="text-muted-foreground hover:text-foreground">Our Process</a></li>
+                <li><Link to="/enquire" className="text-muted-foreground hover:text-foreground">Get a Quotation</Link></li>
               </ul>
             </div>
 
-            {/* Partners */}
             <div>
-              <h4 className="text-sm font-bold uppercase tracking-widest text-primary">Partners</h4>
+              <h4 className="text-sm font-bold uppercase tracking-widest text-primary">Portals</h4>
               <ul className="mt-4 space-y-3 text-sm">
-                <li><a href="/apply/driver" className="text-muted-foreground hover:text-foreground">Become a Driver</a></li>
-                <li><a href="/apply/vendor" className="text-muted-foreground hover:text-foreground">List Your Store</a></li>
-                <li><span className="font-semibold text-primary">Custom quotation per catalogue</span></li>
-                <li className="pt-2"><a href="/login" className="text-muted-foreground hover:text-foreground">Driver Portal →</a></li>
-                <li><a href="/login" className="text-muted-foreground hover:text-foreground">Vendor Portal →</a></li>
-                <li><a href="/staff-login" className="text-muted-foreground hover:text-foreground">Staff Login →</a></li>
+                <li><Link to="/login" className="text-muted-foreground hover:text-foreground">Client Sign in</Link></li>
+                <li><Link to="/staff-login" className="text-muted-foreground hover:text-foreground">Staff Login</Link></li>
+                <li><Link to="/portal" className="text-muted-foreground hover:text-foreground">Team Portal</Link></li>
+                <li><Link to="/admin" className="text-muted-foreground hover:text-foreground">Admin Console</Link></li>
+                <li>
+                  <a href={PORTFOLIO_URL} target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-foreground">
+                    Portfolio →
+                  </a>
+                </li>
               </ul>
             </div>
 
-            {/* Legal */}
             <div>
               <h4 className="text-sm font-bold uppercase tracking-widest text-primary">Legal</h4>
               <ul className="mt-4 space-y-3 text-sm">
-                <li><a href="/privacy" className="text-muted-foreground hover:text-foreground">Privacy Policy</a></li>
-                <li><a href="/terms" className="text-muted-foreground hover:text-foreground">Terms & Conditions</a></li>
-                <li><a href="/popia" className="text-muted-foreground hover:text-foreground">POPIA Compliant</a></li>
+                <li><Link to="/privacy" className="text-muted-foreground hover:text-foreground">Privacy Policy</Link></li>
+                <li><Link to="/terms" className="text-muted-foreground hover:text-foreground">Terms & Conditions</Link></li>
+                <li><Link to="/popia" className="text-muted-foreground hover:text-foreground">POPIA Compliant</Link></li>
               </ul>
             </div>
           </div>
 
           <div className="mt-12 flex flex-col justify-between gap-3 border-t border-border py-6 text-sm text-muted-foreground md:flex-row">
-            <div>© {new Date().getFullYear()} Kasi Dash. All rights reserved. South Africa.</div>
-            <div>Built for the kasi.</div>
+            <div>© {new Date().getFullYear()} Kasi Dash & BuildForge (Pty) Ltd. All rights reserved.</div>
+            <div>Made in South Africa.</div>
           </div>
           <div className="flex flex-col justify-center gap-2 border-t border-border py-5 text-xs text-muted-foreground md:flex-row md:gap-6">
             <span>Reg. No. 2026/362826/07</span>
             <span className="hidden md:inline">|</span>
             <span>Jurisdiction: Republic of South Africa</span>
             <span className="hidden md:inline">|</span>
-            <span>Structure: Web based Enterprise</span>
+            <span>Structure: Web-based Enterprise</span>
           </div>
         </div>
       </footer>
-
     </div>
   );
 }
