@@ -97,6 +97,7 @@ export const ROLE_LABELS: Record<AppRole, string> = {
   sales_agent: "Sales Agent",
   designer: "Designer",
   qa: "Quality Assurance",
+  customer: "Customer",
 };
 
 export type { AppRole };
