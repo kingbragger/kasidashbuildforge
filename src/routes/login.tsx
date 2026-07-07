@@ -27,7 +27,7 @@ function LoginPage() {
     const { error } = await supabase.auth.signInWithPassword({ email, password });
     setLoading(false);
     if (error) return setErr(error.message);
-    nav({ to: "/portal" });
+    nav({ to: "/" });
   }
 
   return (

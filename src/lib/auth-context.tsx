@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState, type ReactNode } from "
 import type { Session, User } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
 
-type AppRole = "admin" | "developer" | "sales_agent" | "designer" | "qa";
+type AppRole = "admin" | "developer" | "sales_agent" | "designer" | "qa" | "customer";
 
 export type Profile = {
   id: string;
@@ -97,6 +97,7 @@ export const ROLE_LABELS: Record<AppRole, string> = {
   sales_agent: "Sales Agent",
   designer: "Designer",
   qa: "Quality Assurance",
+  customer: "Customer",
 };
 
 export type { AppRole };
