@@ -9,18 +9,54 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as StaffLoginRouteImport } from './routes/staff-login'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as PortalRouteImport } from './routes/portal'
+import { Route as PopiaRouteImport } from './routes/popia'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as EnquireRouteImport } from './routes/enquire'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StaffLoginRoute = StaffLoginRouteImport.update({
   id: '/staff-login',
   path: '/staff-login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortalRoute = PortalRouteImport.update({
+  id: '/portal',
+  path: '/portal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PopiaRoute = PopiaRouteImport.update({
+  id: '/popia',
+  path: '/popia',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnquireRoute = EnquireRouteImport.update({
+  id: '/enquire',
+  path: '/enquire',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -31,36 +67,95 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/enquire': typeof EnquireRoute
   '/login': typeof LoginRoute
+  '/popia': typeof PopiaRoute
+  '/portal': typeof PortalRoute
+  '/privacy': typeof PrivacyRoute
   '/staff-login': typeof StaffLoginRoute
+  '/terms': typeof TermsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/enquire': typeof EnquireRoute
   '/login': typeof LoginRoute
+  '/popia': typeof PopiaRoute
+  '/portal': typeof PortalRoute
+  '/privacy': typeof PrivacyRoute
   '/staff-login': typeof StaffLoginRoute
+  '/terms': typeof TermsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/enquire': typeof EnquireRoute
   '/login': typeof LoginRoute
+  '/popia': typeof PopiaRoute
+  '/portal': typeof PortalRoute
+  '/privacy': typeof PrivacyRoute
   '/staff-login': typeof StaffLoginRoute
+  '/terms': typeof TermsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/login' | '/staff-login'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/enquire'
+    | '/login'
+    | '/popia'
+    | '/portal'
+    | '/privacy'
+    | '/staff-login'
+    | '/terms'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/login' | '/staff-login'
-  id: '__root__' | '/' | '/login' | '/staff-login'
+  to:
+    | '/'
+    | '/admin'
+    | '/enquire'
+    | '/login'
+    | '/popia'
+    | '/portal'
+    | '/privacy'
+    | '/staff-login'
+    | '/terms'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/enquire'
+    | '/login'
+    | '/popia'
+    | '/portal'
+    | '/privacy'
+    | '/staff-login'
+    | '/terms'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRoute
+  EnquireRoute: typeof EnquireRoute
   LoginRoute: typeof LoginRoute
+  PopiaRoute: typeof PopiaRoute
+  PortalRoute: typeof PortalRoute
+  PrivacyRoute: typeof PrivacyRoute
   StaffLoginRoute: typeof StaffLoginRoute
+  TermsRoute: typeof TermsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/staff-login': {
       id: '/staff-login'
       path: '/staff-login'
@@ -68,11 +163,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StaffLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portal': {
+      id: '/portal'
+      path: '/portal'
+      fullPath: '/portal'
+      preLoaderRoute: typeof PortalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/popia': {
+      id: '/popia'
+      path: '/popia'
+      fullPath: '/popia'
+      preLoaderRoute: typeof PopiaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/login': {
       id: '/login'
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/enquire': {
+      id: '/enquire'
+      path: '/enquire'
+      fullPath: '/enquire'
+      preLoaderRoute: typeof EnquireRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -87,8 +217,14 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRoute,
+  EnquireRoute: EnquireRoute,
   LoginRoute: LoginRoute,
+  PopiaRoute: PopiaRoute,
+  PortalRoute: PortalRoute,
+  PrivacyRoute: PrivacyRoute,
   StaffLoginRoute: StaffLoginRoute,
+  TermsRoute: TermsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
