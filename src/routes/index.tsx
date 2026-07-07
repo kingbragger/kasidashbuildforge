@@ -98,16 +98,15 @@ function Index() {
                 Join
               </button>
             </form>
-            {/* Bark badge placeholder */}
             <a
               href="https://www.bark.com/en/za/company/kasidash-and-buildforge-ptyltd/Qw61nL/"
               target="_blank"
               rel="noreferrer"
-              className="mt-6 inline-flex items-center rounded-md bg-white px-4 py-3 text-xs font-bold text-slate-900"
+              className="mt-6 inline-block"
             >
-              ★ bark PROFESSIONAL ★
-              <span className="ml-2 text-[10px] font-normal text-slate-500">(upload badge to replace)</span>
+              <img src={barkBadge} alt="Bark Professional" className="h-16 w-auto" />
             </a>
+
           </div>
 
           {/* Floating category cards */}
