@@ -11,10 +11,13 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as StaffLoginRouteImport } from './routes/staff-login'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as RegisterRouteImport } from './routes/register'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PortalRouteImport } from './routes/portal'
 import { Route as PopiaRouteImport } from './routes/popia'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as EnquireRouteImport } from './routes/enquire'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
@@ -27,6 +30,16 @@ const TermsRoute = TermsRouteImport.update({
 const StaffLoginRoute = StaffLoginRouteImport.update({
   id: '/staff-login',
   path: '/staff-login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -49,6 +62,11 @@ const LoginRoute = LoginRouteImport.update({
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
+  id: '/forgot-password',
+  path: '/forgot-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EnquireRoute = EnquireRouteImport.update({
   id: '/enquire',
   path: '/enquire',
@@ -69,10 +87,13 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/enquire': typeof EnquireRoute
+  '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/popia': typeof PopiaRoute
   '/portal': typeof PortalRoute
   '/privacy': typeof PrivacyRoute
+  '/register': typeof RegisterRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/staff-login': typeof StaffLoginRoute
   '/terms': typeof TermsRoute
 }
@@ -80,10 +101,13 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/enquire': typeof EnquireRoute
+  '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/popia': typeof PopiaRoute
   '/portal': typeof PortalRoute
   '/privacy': typeof PrivacyRoute
+  '/register': typeof RegisterRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/staff-login': typeof StaffLoginRoute
   '/terms': typeof TermsRoute
 }
@@ -92,10 +116,13 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/enquire': typeof EnquireRoute
+  '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/popia': typeof PopiaRoute
   '/portal': typeof PortalRoute
   '/privacy': typeof PrivacyRoute
+  '/register': typeof RegisterRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/staff-login': typeof StaffLoginRoute
   '/terms': typeof TermsRoute
 }
@@ -105,10 +132,13 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/enquire'
+    | '/forgot-password'
     | '/login'
     | '/popia'
     | '/portal'
     | '/privacy'
+    | '/register'
+    | '/reset-password'
     | '/staff-login'
     | '/terms'
   fileRoutesByTo: FileRoutesByTo
@@ -116,10 +146,13 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/enquire'
+    | '/forgot-password'
     | '/login'
     | '/popia'
     | '/portal'
     | '/privacy'
+    | '/register'
+    | '/reset-password'
     | '/staff-login'
     | '/terms'
   id:
@@ -127,10 +160,13 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/enquire'
+    | '/forgot-password'
     | '/login'
     | '/popia'
     | '/portal'
     | '/privacy'
+    | '/register'
+    | '/reset-password'
     | '/staff-login'
     | '/terms'
   fileRoutesById: FileRoutesById
@@ -139,10 +175,13 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminRoute: typeof AdminRoute
   EnquireRoute: typeof EnquireRoute
+  ForgotPasswordRoute: typeof ForgotPasswordRoute
   LoginRoute: typeof LoginRoute
   PopiaRoute: typeof PopiaRoute
   PortalRoute: typeof PortalRoute
   PrivacyRoute: typeof PrivacyRoute
+  RegisterRoute: typeof RegisterRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
   StaffLoginRoute: typeof StaffLoginRoute
   TermsRoute: typeof TermsRoute
 }
@@ -161,6 +200,20 @@ declare module '@tanstack/react-router' {
       path: '/staff-login'
       fullPath: '/staff-login'
       preLoaderRoute: typeof StaffLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -191,6 +244,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/forgot-password': {
+      id: '/forgot-password'
+      path: '/forgot-password'
+      fullPath: '/forgot-password'
+      preLoaderRoute: typeof ForgotPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/enquire': {
       id: '/enquire'
       path: '/enquire'
@@ -219,10 +279,13 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRoute: AdminRoute,
   EnquireRoute: EnquireRoute,
+  ForgotPasswordRoute: ForgotPasswordRoute,
   LoginRoute: LoginRoute,
   PopiaRoute: PopiaRoute,
   PortalRoute: PortalRoute,
   PrivacyRoute: PrivacyRoute,
+  RegisterRoute: RegisterRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
   StaffLoginRoute: StaffLoginRoute,
   TermsRoute: TermsRoute,
 }

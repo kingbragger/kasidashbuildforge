@@ -49,6 +49,9 @@ function LoginPage() {
               className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm outline-none focus:border-primary" />
           </div>
           {err && <p className="text-sm text-destructive">{err}</p>}
+          <div className="text-right">
+            <Link to="/forgot-password" className="text-xs font-semibold text-primary hover:underline">Forgot password?</Link>
+          </div>
           <button disabled={loading} type="submit"
             className="w-full rounded-lg bg-primary py-3 text-sm font-semibold text-primary-foreground hover:opacity-90 disabled:opacity-60">
             {loading ? "Signing in..." : "Sign in"}
@@ -56,8 +59,12 @@ function LoginPage() {
         </form>
 
         <div className="mt-6 text-center text-sm text-muted-foreground">
-          Not a customer?{" "}
-          <Link to="/enquire" className="font-semibold text-primary hover:underline">Enquire for a quotation</Link>
+          New customer?{" "}
+          <Link to="/register" className="font-semibold text-primary hover:underline">Create an account</Link>
+        </div>
+        <div className="mt-2 text-center text-sm text-muted-foreground">
+          Need a quote?{" "}
+          <Link to="/enquire" className="font-semibold text-primary hover:underline">Enquire for pricing</Link>
         </div>
         <div className="mt-4 text-center text-xs text-muted-foreground">
           Staff member?{" "}

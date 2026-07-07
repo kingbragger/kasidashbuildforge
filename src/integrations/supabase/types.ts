@@ -74,6 +74,7 @@ export type Database = {
           id_number: string | null
           must_change_password: boolean
           phone: string | null
+          surname: string | null
           updated_at: string
           user_id: string
         }
@@ -88,6 +89,7 @@ export type Database = {
           id_number?: string | null
           must_change_password?: boolean
           phone?: string | null
+          surname?: string | null
           updated_at?: string
           user_id: string
         }
@@ -102,6 +104,7 @@ export type Database = {
           id_number?: string | null
           must_change_password?: boolean
           phone?: string | null
+          surname?: string | null
           updated_at?: string
           user_id?: string
         }
@@ -175,6 +178,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      generate_customer_id: { Args: never; Returns: string }
       generate_employee_id: { Args: never; Returns: string }
       has_role: {
         Args: {
@@ -186,7 +190,13 @@ export type Database = {
       is_admin: { Args: { _user_id: string }; Returns: boolean }
     }
     Enums: {
-      app_role: "admin" | "developer" | "sales_agent" | "designer" | "qa"
+      app_role:
+        | "admin"
+        | "developer"
+        | "sales_agent"
+        | "designer"
+        | "qa"
+        | "customer"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -314,7 +324,14 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
-      app_role: ["admin", "developer", "sales_agent", "designer", "qa"],
+      app_role: [
+        "admin",
+        "developer",
+        "sales_agent",
+        "designer",
+        "qa",
+        "customer",
+      ],
     },
   },
 } as const
