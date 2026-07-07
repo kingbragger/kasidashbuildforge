@@ -51,9 +51,8 @@ function Index() {
       {/* Nav */}
       <header className="sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          <div className="text-2xl font-black italic tracking-tight">
-            <span className="text-primary">Kasi</span> Dash
-          </div>
+          <img src={kasiLogo} alt="Kasi Dash" className="h-10 w-auto" />
+
           <nav className="hidden gap-8 text-sm text-muted-foreground md:flex">
             <a href="#categories" className="hover:text-foreground">Categories</a>
             <a href="#how" className="hover:text-foreground">How it works</a>
