@@ -15,11 +15,11 @@ export const Route = createFileRoute("/")({
         content:
           "We build professional websites for every business, from e-commerce to corporate, booking systems, portfolios and custom platforms. Plans from R2,500.",
       },
-      { property: "og:title", content: "Kasi Dash · Professional Web Development" },
+      { property: "og:title", content: "Kasi Dash · Professional Web Development in South Africa" },
       {
         property: "og:description",
         content:
-          "E-commerce, corporate, booking, portfolio and custom web platforms. Certified engineers. Plans from R2,500.",
+          "We build professional websites for every business, from e-commerce to corporate, booking systems, portfolios and custom platforms. Plans from R2,500.",
       },
       { property: "og:type", content: "website" },
     ],
