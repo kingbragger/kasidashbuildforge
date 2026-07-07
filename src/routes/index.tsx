@@ -164,6 +164,9 @@ const plans = [
 function Index() {
   return (
     <div className="min-h-screen bg-background text-foreground">
+function Index() {
+  return (
+    <div className="min-h-screen bg-background text-foreground">
       {/* Nav */}
       <header className="sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
@@ -176,19 +179,15 @@ function Index() {
             <a href="#credentials" className="hover:text-foreground">Credentials</a>
             <a href={PORTFOLIO_URL} target="_blank" rel="noreferrer" className="hover:text-foreground">Portfolio</a>
           </nav>
-          <div className="flex items-center gap-3">
-            <Link to="/login" className="hidden text-sm font-medium text-muted-foreground hover:text-foreground sm:inline">
-              Sign in
-            </Link>
-            <Link to="/enquire" className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:opacity-90">
-              Enquire
-            </Link>
-          </div>
+          <HeaderAuth />
         </div>
       </header>
 
+      <CustomerDashboard />
+
       {/* Hero */}
       <section className="relative overflow-hidden">
+
         {/* Hexagon line pattern background */}
         <div className="pointer-events-none absolute inset-0 text-primary opacity-[0.22]" aria-hidden>
           <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
