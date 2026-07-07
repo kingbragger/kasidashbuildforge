@@ -39,7 +39,7 @@ function RegisterPage() {
       email: email.trim(),
       password,
       options: {
-        emailRedirectTo: `${window.location.origin}/portal`,
+        emailRedirectTo: `${window.location.origin}/`,
         data: {
           account_type: "customer",
           first_name: firstName.trim(),
@@ -53,7 +53,7 @@ function RegisterPage() {
 
     if (error) return setErr(error.message);
     if (data.session) {
-      nav({ to: "/portal" });
+      nav({ to: "/" });
     } else {
       setMsg("Account created. Please check your email to confirm your address, then sign in.");
     }
