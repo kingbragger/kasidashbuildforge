@@ -105,7 +105,7 @@ const plans = [
       "Mobile responsive design",
       "Contact form & WhatsApp button",
       "Basic SEO setup",
-      "Hosted on Netlify",
+      "Domain name & business email setup available at a fee",
       "Delivered in 5 to 7 days",
     ],
     cta: "Start with Starter",
