@@ -249,7 +249,7 @@ function Index() {
       <section className="py-24">
         <div className="mx-auto grid max-w-7xl gap-12 px-6 md:grid-cols-2 md:items-center">
           <div>
-            <div className="text-2xl font-black tracking-tight text-primary">BuildForge</div>
+            <img src={buildforgeLogo} alt="BuildForge" className="h-12 w-auto" />
             <h2 className="mt-4 text-4xl font-black md:text-5xl">Prove your skills. Join the core team.</h2>
             <p className="mt-4 max-w-md text-muted-foreground">
               BuildForge is a system where developers, designers, and marketers prove their skills through real challenges and get selected into a core team to work on real projects.
