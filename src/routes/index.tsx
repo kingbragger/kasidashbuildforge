@@ -563,3 +563,187 @@ function Index() {
     </div>
   );
 }
+
+function HeaderAuth() {
+  const { user, profile, roles, signOut } = useAuth();
+  if (!user) {
+    return (
+      <div className="flex items-center gap-3">
+        <Link to="/login" className="hidden text-sm font-medium text-muted-foreground hover:text-foreground sm:inline">
+          Sign in
+        </Link>
+        <Link to="/enquire" className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:opacity-90">
+          Enquire
+        </Link>
+      </div>
+    );
+  }
+  const isStaff = roles.some((r) => r !== "customer");
+  return (
+    <div className="flex items-center gap-3">
+      <a href="#my-account" className="hidden text-right text-xs sm:block">
+        <div className="font-semibold">{profile?.full_name || profile?.email || "Account"}</div>
+        <div className="text-muted-foreground">{profile?.employee_id}</div>
+      </a>
+      {isStaff && (
+        <Link to="/portal" className="rounded-lg border border-primary/40 bg-primary/10 px-3 py-2 text-xs font-semibold text-primary">
+          Staff Portal
+        </Link>
+      )}
+      <Link to="/enquire" className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:opacity-90">
+        New enquiry
+      </Link>
+      <button onClick={() => signOut()} className="text-xs text-muted-foreground hover:text-foreground">
+        Sign out
+      </button>
+    </div>
+  );
+}
+
+type CustomerEnquiry = {
+  id: string;
+  business_name: string | null;
+  project_type: string | null;
+  budget_range: string | null;
+  message: string;
+  status: string;
+  assigned_to: string | null;
+  created_at: string;
+};
+
+function CustomerDashboard() {
+  const { user, profile, roles, loading } = useAuth();
+  const [enquiries, setEnquiries] = useState<CustomerEnquiry[]>([]);
+  const [busy, setBusy] = useState(true);
+
+  useEffect(() => {
+    if (!user || !profile) {
+      setBusy(false);
+      return;
+    }
+    setBusy(true);
+    supabase
+      .from("enquiries")
+      .select("id, business_name, project_type, budget_range, message, status, assigned_to, created_at")
+      .order("created_at", { ascending: false })
+      .then(({ data }) => {
+        setEnquiries((data as CustomerEnquiry[]) ?? []);
+        setBusy(false);
+      });
+  }, [user, profile]);
+
+  if (loading || !user || !profile) return null;
+  // Only show for customers (not staff-only accounts)
+  if (roles.length > 0 && !roles.includes("customer")) return null;
+
+  const active = enquiries.filter((e) => e.status !== "closed" && e.status !== "rejected");
+  const history = enquiries;
+
+  return (
+    <section id="my-account" className="border-b border-border bg-card/40">
+      <div className="mx-auto max-w-7xl px-6 py-10">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-widest text-primary">My account</p>
+            <h2 className="mt-1 text-3xl font-black">
+              Welcome back, {(profile.full_name || profile.email || "").split(" ")[0]}
+            </h2>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Customer ID: <span className="font-mono text-foreground">{profile.employee_id}</span>
+            </p>
+          </div>
+          <Link to="/enquire" className="rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:opacity-90">
+            Start a new project →
+          </Link>
+        </div>
+
+        <div className="mt-8 grid gap-6 md:grid-cols-2">
+          <div className="rounded-2xl border border-border bg-card p-6">
+            <div className="flex items-center justify-between">
+              <h3 className="text-lg font-bold">Active projects</h3>
+              <span className="rounded-full bg-primary/15 px-2.5 py-1 text-xs font-semibold text-primary">
+                {active.length}
+              </span>
+            </div>
+            <p className="mt-1 text-xs text-muted-foreground">
+              Projects currently being reviewed, quoted or built for you.
+            </p>
+            <div className="mt-5 space-y-3">
+              {busy && <div className="text-sm text-muted-foreground">Loading…</div>}
+              {!busy && active.length === 0 && (
+                <div className="rounded-xl border border-dashed border-border p-5 text-center text-sm text-muted-foreground">
+                  No active projects yet.{" "}
+                  <Link to="/enquire" className="font-semibold text-primary hover:underline">
+                    Send an enquiry
+                  </Link>{" "}
+                  to get started.
+                </div>
+              )}
+              {active.map((e) => (
+                <EnquiryCard key={e.id} e={e} />
+              ))}
+            </div>
+          </div>
+
+          <div className="rounded-2xl border border-border bg-card p-6">
+            <div className="flex items-center justify-between">
+              <h3 className="text-lg font-bold">Enquiry history</h3>
+              <span className="rounded-full bg-secondary px-2.5 py-1 text-xs font-semibold text-secondary-foreground">
+                {history.length}
+              </span>
+            </div>
+            <p className="mt-1 text-xs text-muted-foreground">All enquiries you've sent us.</p>
+            <div className="mt-5 space-y-3">
+              {busy && <div className="text-sm text-muted-foreground">Loading…</div>}
+              {!busy && history.length === 0 && (
+                <div className="rounded-xl border border-dashed border-border p-5 text-center text-sm text-muted-foreground">
+                  Nothing here yet.
+                </div>
+              )}
+              {history.map((e) => (
+                <EnquiryCard key={e.id} e={e} compact />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function EnquiryCard({ e, compact }: { e: CustomerEnquiry; compact?: boolean }) {
+  const date = new Date(e.created_at).toLocaleDateString("en-ZA", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+  const statusColor =
+    e.status === "closed" || e.status === "rejected"
+      ? "bg-muted text-muted-foreground"
+      : e.status === "in_progress" || e.status === "quoted"
+      ? "bg-primary/15 text-primary"
+      : "bg-secondary text-secondary-foreground";
+  return (
+    <div className="rounded-xl border border-border bg-background p-4">
+      <div className="flex flex-wrap items-start justify-between gap-2">
+        <div>
+          <div className="font-semibold">
+            {e.business_name || e.project_type || "Website project"}
+          </div>
+          <div className="text-xs text-muted-foreground">
+            {date}
+            {e.project_type ? ` · ${e.project_type}` : ""}
+            {e.budget_range ? ` · ${e.budget_range}` : ""}
+          </div>
+        </div>
+        <span className={`rounded-full px-2.5 py-1 text-xs font-semibold capitalize ${statusColor}`}>
+          {e.status.replace(/_/g, " ")}
+        </span>
+      </div>
+      {!compact && (
+        <p className="mt-3 line-clamp-3 text-sm text-muted-foreground">{e.message}</p>
+      )}
+    </div>
+  );
+}
+
