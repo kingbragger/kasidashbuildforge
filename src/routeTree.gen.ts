@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as StaffLoginRouteImport } from './routes/staff-login'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as PortalRouteImport } from './routes/portal'
 import { Route as PopiaRouteImport } from './routes/popia'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as EnquireRouteImport } from './routes/enquire'
@@ -30,6 +31,11 @@ const StaffLoginRoute = StaffLoginRouteImport.update({
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortalRoute = PortalRouteImport.update({
+  id: '/portal',
+  path: '/portal',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PopiaRoute = PopiaRouteImport.update({
@@ -58,6 +64,7 @@ export interface FileRoutesByFullPath {
   '/enquire': typeof EnquireRoute
   '/login': typeof LoginRoute
   '/popia': typeof PopiaRoute
+  '/portal': typeof PortalRoute
   '/privacy': typeof PrivacyRoute
   '/staff-login': typeof StaffLoginRoute
   '/terms': typeof TermsRoute
@@ -67,6 +74,7 @@ export interface FileRoutesByTo {
   '/enquire': typeof EnquireRoute
   '/login': typeof LoginRoute
   '/popia': typeof PopiaRoute
+  '/portal': typeof PortalRoute
   '/privacy': typeof PrivacyRoute
   '/staff-login': typeof StaffLoginRoute
   '/terms': typeof TermsRoute
@@ -77,6 +85,7 @@ export interface FileRoutesById {
   '/enquire': typeof EnquireRoute
   '/login': typeof LoginRoute
   '/popia': typeof PopiaRoute
+  '/portal': typeof PortalRoute
   '/privacy': typeof PrivacyRoute
   '/staff-login': typeof StaffLoginRoute
   '/terms': typeof TermsRoute
@@ -88,6 +97,7 @@ export interface FileRouteTypes {
     | '/enquire'
     | '/login'
     | '/popia'
+    | '/portal'
     | '/privacy'
     | '/staff-login'
     | '/terms'
@@ -97,6 +107,7 @@ export interface FileRouteTypes {
     | '/enquire'
     | '/login'
     | '/popia'
+    | '/portal'
     | '/privacy'
     | '/staff-login'
     | '/terms'
@@ -106,6 +117,7 @@ export interface FileRouteTypes {
     | '/enquire'
     | '/login'
     | '/popia'
+    | '/portal'
     | '/privacy'
     | '/staff-login'
     | '/terms'
@@ -116,6 +128,7 @@ export interface RootRouteChildren {
   EnquireRoute: typeof EnquireRoute
   LoginRoute: typeof LoginRoute
   PopiaRoute: typeof PopiaRoute
+  PortalRoute: typeof PortalRoute
   PrivacyRoute: typeof PrivacyRoute
   StaffLoginRoute: typeof StaffLoginRoute
   TermsRoute: typeof TermsRoute
@@ -142,6 +155,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portal': {
+      id: '/portal'
+      path: '/portal'
+      fullPath: '/portal'
+      preLoaderRoute: typeof PortalRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/popia': {
@@ -180,6 +200,7 @@ const rootRouteChildren: RootRouteChildren = {
   EnquireRoute: EnquireRoute,
   LoginRoute: LoginRoute,
   PopiaRoute: PopiaRoute,
+  PortalRoute: PortalRoute,
   PrivacyRoute: PrivacyRoute,
   StaffLoginRoute: StaffLoginRoute,
   TermsRoute: TermsRoute,
