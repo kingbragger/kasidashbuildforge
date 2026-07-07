@@ -187,7 +187,7 @@ function Index() {
       {/* Hero */}
       <section className="relative overflow-hidden">
         {/* Hexagon line pattern background */}
-        <div className="pointer-events-none absolute inset-0 opacity-[0.18]" aria-hidden>
+        <div className="pointer-events-none absolute inset-0 text-primary opacity-[0.22]" aria-hidden>
           <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern id="hexPattern" x="0" y="0" width="70" height="60.62" patternUnits="userSpaceOnUse">
