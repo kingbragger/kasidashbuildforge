@@ -194,7 +194,7 @@ function Index() {
                 <path
                   d="M35 0 L70 20.2 L70 60.62 L35 80.83 L0 60.62 L0 20.2 Z"
                   fill="none"
-                  stroke="hsl(var(--primary) / 1)"
+                  stroke="currentColor"
                   strokeWidth="0.6"
                 />
               </pattern>
