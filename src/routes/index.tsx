@@ -331,7 +331,7 @@ function Index() {
           </div>
 
           <p className="mt-8 max-w-2xl text-sm text-muted-foreground">
-            All prices are in South African Rand and exclude domain, hosting and third-party service fees. A detailed quotation is sent after your enquiry.
+            All prices are in South African Rand and include domain name, business email and hosting setup, plus any third-party service fees. A detailed quotation is sent after your enquiry.
           </p>
         </div>
       </section>
