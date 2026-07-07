@@ -1,4 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
+import barkBadge from "@/assets/bark-badge.png";
+import kasiLogo from "@/assets/kasi-logo.png";
+import buildforgeLogo from "@/assets/buildforge-logo.png";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
