@@ -5,6 +5,9 @@
 [build.environment]
   NITRO_PRESET = "netlify"
   NODE_VERSION = "20"
+  # Supabase URL / publishable key / project ID are public by design and are
+  # inlined into the client bundle, so exclude them from secrets scanning.
+  SECRETS_SCAN_OMIT_KEYS = "SUPABASE_URL,VITE_SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY,VITE_SUPABASE_PUBLISHABLE_KEY,SUPABASE_PROJECT_ID,VITE_SUPABASE_PROJECT_ID"
 
 # TanStack Router handles routing client-side; ensure deep links work.
 [[redirects]]
