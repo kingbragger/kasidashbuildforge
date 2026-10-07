@@ -6,6 +6,11 @@ import type { Database } from './types'
 
 
 
+// Netlify env values may be saved with surrounding quotes; strip them so the URL/key stay valid.
+function cleanEnv(value: string | undefined): string | undefined {
+  return value?.trim().replace(/^["']+|["']+$/g, '') || undefined;
+}
+
 function isNewSupabaseApiKey(value: string): boolean {
   return value.startsWith('sb_publishable_') || value.startsWith('sb_secret_');
 }
@@ -33,8 +38,8 @@ function createSupabaseFetch(supabaseKey: string): typeof fetch {
 export const requireSupabaseAuth = createMiddleware({ type: 'function' }).server(
   async ({ next }) => {
     
-    const SUPABASE_URL = process.env.SUPABASE_URL;
-    const SUPABASE_PUBLISHABLE_KEY = process.env.SUPABASE_PUBLISHABLE_KEY;
+    const SUPABASE_URL = cleanEnv(process.env.SUPABASE_URL);
+    const SUPABASE_PUBLISHABLE_KEY = cleanEnv(process.env.SUPABASE_PUBLISHABLE_KEY);
 
     if (!SUPABASE_URL || !SUPABASE_PUBLISHABLE_KEY) {
       const missing = [

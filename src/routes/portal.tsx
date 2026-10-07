@@ -63,6 +63,11 @@ function PortalPage() {
                 Admin Console
               </Link>
             )}
+            {!isAdmin && roles.includes("sales_agent") && (
+              <Link to="/admin" className="rounded-lg border border-primary/40 bg-primary/10 px-3 py-2 text-xs font-semibold text-primary">
+                Sales Console
+              </Link>
+            )}
             <div className="text-right text-xs">
               <div className="font-semibold">{profile.full_name || profile.email}</div>
               <div className="text-muted-foreground">{profile.employee_id} · {roles.map((r) => ROLE_LABELS[r]).join(", ") || "No role"}</div>

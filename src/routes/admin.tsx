@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth, ROLE_LABELS, type AppRole } from "@/lib/auth-context";
-import { createTeamMember, listTeam, deleteTeamMember } from "@/lib/admin.functions";
+import { createTeamMember, listTeam, deleteTeamMember, updateTeamMember } from "@/lib/admin.functions";
 import kasiLogo from "@/assets/kasi-logo.png";
 
 export const Route = createFileRoute("/admin")({
@@ -23,20 +23,27 @@ type Enquiry = {
 };
 type Member = {
   user_id: string; employee_id: string; full_name: string | null; email: string;
-  phone: string | null; id_number: string | null; roles: string[]; must_change_password: boolean;
+  phone: string | null; id_number: string | null; roles: string[]; must_change_password: boolean; disabled?: boolean;
 };
+
+const ADMIN_TABS = ["enquiries", "team", "tasks"] as const;
+const SALES_TABS = ["enquiries"] as const;
+type Tab = (typeof ADMIN_TABS)[number];
 
 function AdminPage() {
   const { user, roles, loading, signOut } = useAuth();
   const nav = useNavigate();
-  const [tab, setTab] = useState<"enquiries" | "team" | "tasks">("enquiries");
+  const [tab, setTab] = useState<Tab>("enquiries");
+  const isAdmin = roles.includes("admin");
+  const isStaff = isAdmin || roles.includes("sales_agent");
+  const tabs: readonly Tab[] = isAdmin ? ADMIN_TABS : SALES_TABS;
 
   useEffect(() => {
-    if (!loading && (!user || !roles.includes("admin"))) nav({ to: "/staff-login" });
-  }, [loading, user, roles, nav]);
+    if (!loading && (!user || !isStaff)) nav({ to: "/staff-login" });
+  }, [loading, user, isStaff, nav]);
 
   if (loading || !user) return <div className="flex min-h-screen items-center justify-center text-muted-foreground">Loading...</div>;
-  if (!roles.includes("admin")) return <div className="flex min-h-screen items-center justify-center text-destructive">Admins only.</div>;
+  if (!isStaff) return <div className="flex min-h-screen items-center justify-center text-destructive">Admins and sales only.</div>;
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -53,12 +60,12 @@ function AdminPage() {
 
       <div className="mx-auto max-w-7xl px-6 py-10">
         <div className="flex items-center gap-3">
-          <span className="rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-primary">Admin Console</span>
+          <span className="rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-primary">{isAdmin ? "Admin Console" : "Sales Console"}</span>
         </div>
         <h1 className="mt-3 text-3xl font-black">Operations Dashboard</h1>
 
-        <div className="mt-8 flex gap-2 border-b border-border">
-          {(["enquiries","team","tasks"] as const).map((t) => (
+        <div className="mt-8 flex flex-wrap gap-2 border-b border-border">
+          {tabs.map((t) => (
             <button key={t} onClick={() => setTab(t)}
               className={`px-4 py-2 text-sm font-medium capitalize ${tab === t ? "border-b-2 border-primary text-primary" : "text-muted-foreground"}`}>
               {t}
@@ -181,6 +188,8 @@ function TeamTab() {
   const list = useServerFn(listTeam);
   const create = useServerFn(createTeamMember);
   const remove = useServerFn(deleteTeamMember);
+  const update = useServerFn(updateTeamMember);
+  const [editing, setEditing] = useState<{ user_id: string; full_name: string; phone: string; roles: string[]; disabled: boolean } | null>(null);
   const [members, setMembers] = useState<Member[]>([]);
   const [showForm, setShowForm] = useState(false);
   const [form, setForm] = useState({ email: "", full_name: "", role: "developer" as AppRole, phone: "" });
@@ -210,6 +219,13 @@ function TeamTab() {
   async function del(uid: string) {
     if (!confirm("Delete this account? This cannot be undone.")) return;
     try { await remove({ data: { user_id: uid } }); refresh(); } catch (e) { setErr((e as Error).message); }
+  }
+
+  async function saveEdit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!editing) return;
+    setErr("");
+    try { await update({ data: editing as never }); setEditing(null); refresh(); } catch (e) { setErr((e as Error).message); }
   }
 
   return (
@@ -256,7 +272,37 @@ function TeamTab() {
         </form>
       )}
 
-      <div className="mt-6 overflow-hidden rounded-2xl border border-border bg-card">
+      {editing && (
+        <form onSubmit={saveEdit} className="mt-5 grid gap-4 rounded-2xl border border-primary/40 bg-card p-6 md:grid-cols-2">
+          <h3 className="md:col-span-2 font-bold">Edit team member</h3>
+          <TF label="Full name" value={editing.full_name} onChange={(v) => setEditing({ ...editing, full_name: v })} required />
+          <TF label="Phone" value={editing.phone} onChange={(v) => setEditing({ ...editing, phone: v })} />
+          <div className="md:col-span-2">
+            <label className="mb-1 block text-sm font-medium">Roles & access</label>
+            <div className="flex flex-wrap gap-4 text-sm">
+              {(Object.entries(ROLE_LABELS) as [AppRole, string][]).filter(([k]) => k !== "customer").map(([k, v]) => (
+                <label key={k} className="flex items-center gap-2">
+                  <input type="checkbox" checked={editing.roles.includes(k)}
+                    onChange={(e) => setEditing({ ...editing, roles: e.target.checked ? [...editing.roles, k] : editing.roles.filter((r) => r !== k) })} />
+                  {v}
+                </label>
+              ))}
+            </div>
+          </div>
+          <label className="md:col-span-2 flex items-center gap-2 text-sm">
+            <input type="checkbox" checked={editing.disabled} onChange={(e) => setEditing({ ...editing, disabled: e.target.checked })} />
+            Account disabled (cannot sign in)
+          </label>
+          {err && <p className="md:col-span-2 text-sm text-destructive">{err}</p>}
+          <div className="md:col-span-2 flex gap-2">
+            <button type="submit" className="rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground">Save changes</button>
+            <button type="button" onClick={() => setEditing(null)} className="rounded-lg border border-border px-4 py-2.5 text-sm">Cancel</button>
+          </div>
+        </form>
+      )}
+      {err && !showForm && !editing && <p className="mt-4 text-sm text-destructive">{err}</p>}
+
+      <div className="mt-6 overflow-x-auto rounded-2xl border border-border bg-card">
         <table className="w-full text-sm">
           <thead className="border-b border-border bg-background/50 text-xs uppercase text-muted-foreground">
             <tr>
@@ -265,6 +311,7 @@ function TeamTab() {
               <th className="px-4 py-3 text-left">Email</th>
               <th className="px-4 py-3 text-left">Role</th>
               <th className="px-4 py-3 text-left">ID Verified</th>
+              <th className="px-4 py-3 text-left">Status</th>
               <th className="px-4 py-3"></th>
             </tr>
           </thead>
@@ -276,7 +323,10 @@ function TeamTab() {
                 <td className="px-4 py-3">{m.email}</td>
                 <td className="px-4 py-3">{m.roles.map((r) => ROLE_LABELS[r as AppRole] || r).join(", ") || "—"}</td>
                 <td className="px-4 py-3">{m.id_number ? <span className="text-primary">Yes</span> : <span className="text-muted-foreground">Pending</span>}</td>
-                <td className="px-4 py-3 text-right">
+                <td className="px-4 py-3">{m.disabled ? <span className="text-destructive">Disabled</span> : <span className="text-primary">Active</span>}</td>
+                <td className="whitespace-nowrap px-4 py-3 text-right">
+                  <button onClick={() => { setErr(""); setEditing({ user_id: m.user_id, full_name: m.full_name || "", phone: m.phone || "", roles: m.roles, disabled: !!m.disabled }); }}
+                    className="mr-3 text-xs text-primary hover:underline">Edit</button>
                   <button onClick={() => del(m.user_id)} className="text-xs text-destructive hover:underline">Delete</button>
                 </td>
               </tr>
